@@ -13,6 +13,7 @@ namespace Client
         static void Main(string[] args)
         {
             InitializeClient initializeClient = new InitializeClient("127.0.0.1",11000,1);
+
             try
             {
                 InitializeConnect initializeConnect = new InitializeConnect(initializeClient.tcpClient);
@@ -20,7 +21,7 @@ namespace Client
                 {
                     if (initializeConnect.TcpClient.Connected)
                     {
-
+                       
                         GetClientMessage getClientMessage = new GetClientMessage(initializeConnect.TcpClient);
                         getClientMessage.Print();
                     }

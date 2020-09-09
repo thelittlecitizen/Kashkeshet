@@ -16,9 +16,11 @@ namespace Client
         {
             TcpClient = tcpClient;
         }
-
-        public void Read(TcpClient tcpClient)
+        
+        public void Read()
         {
+            Thread thread = new Thread(Read);
+            thread.Start();
             StreamReader sReader = new StreamReader(TcpClient.GetStream());
 
             while (true)

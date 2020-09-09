@@ -16,8 +16,11 @@ namespace Client
         {
             TcpClient = tcpClient;
         }
+        
         public void Print()
         {
+            Thread thread = new Thread(Print);
+            thread.Start();
             StreamWriter sWriter = new StreamWriter(TcpClient.GetStream());
 
             Console.WriteLine("please enter your message");

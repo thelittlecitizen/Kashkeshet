@@ -19,7 +19,7 @@ namespace Server
             TcpListener = tcpListener;
             TcpClientsList = tcpClientsList;
         }
-
+        
         public void Connect()
         {
             TcpListener.Start();
@@ -29,6 +29,7 @@ namespace Server
             {
                 TcpClient tcpClient = TcpListener.AcceptTcpClient();
                 TcpClientsList.Add(tcpClient);
+
                 GetMessageFromClient getMessageFromClient = new GetMessageFromClient(tcpClient);
                 getMessageFromClient.ReadFromClient();
             }

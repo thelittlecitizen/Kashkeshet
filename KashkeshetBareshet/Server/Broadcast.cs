@@ -19,6 +19,7 @@ namespace Server
 
         public void MessageBroadcast(string message, TcpClient excludeClient)
         {
+            Console.WriteLine("check broadcast work");
             foreach (TcpClient client in TcpClientsList)
             {
                 if (client != excludeClient)
@@ -28,6 +29,7 @@ namespace Server
                     sWriter.Flush();
                 }
             }
+            Console.WriteLine("check broadcast workend");
         }
        
     }

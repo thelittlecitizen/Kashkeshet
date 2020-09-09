@@ -11,7 +11,7 @@ namespace Client
     class InitializeConnect
     {
         public TcpClient TcpClient { get; set; }
-        InitializeClient initializeClient;
+        public InitializeClient initializeClient { get; set; }
 
         public InitializeConnect(TcpClient tcpClient)
         {
@@ -24,7 +24,6 @@ namespace Client
 
             sWriterclient.WriteLine($"{initializeClient.ClientId} connected");
             sWriterclient.Flush();
-
         }
     }
 }

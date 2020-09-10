@@ -19,19 +19,21 @@ namespace Client
         {
            
             InitializeClient initializeClient = new InitializeClient("127.0.0.1",11000,1);
-             GetMessageFromServer getMessageFromServer = new GetMessageFromServer(initializeClient.tcpClient);
+            InitializeClient initializeClient1 = new InitializeClient("127.0.0.1", 11000, 2);
+
+            GetMessageFromServer getMessageFromServer = new GetMessageFromServer(initializeClient.TcpClient);
             Thread t = new Thread(() => getMessageFromServer.Read());
             t.Start();
             try
             {
-                InitializeConnect initializeConnect = new InitializeConnect(initializeClient.tcpClient);
-                
+                InitializeConnect initializeConnect = new InitializeConnect(initializeClient);
+                initializeConnect.Connect();
+
                 while (true)
                 {
-                    if (initializeConnect.TcpClient.Connected)
+                    if (initializeConnect.InitializeClient.TcpClient.Connected)
                     {
-                       // initializeConnect.Connect();
-                        GetClientMessage getClientMessage = new GetClientMessage(initializeConnect.TcpClient);
+                        GetClientMessage getClientMessage = new GetClientMessage(initializeConnect.InitializeClient.TcpClient);
                         getClientMessage.Print();
                         //Thread thread = new Thread(getClientMessage.Print);
                         //thread.Start();

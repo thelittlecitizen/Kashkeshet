@@ -22,7 +22,6 @@ namespace Server
 
         public void ReadFromClient()
         {
-            Console.WriteLine("check if getmessagefromclient readfromclientwork");
             //broadcast connected message//
             StreamReader clientconnected = new StreamReader(TcpClient.GetStream());
             string messageclient = clientconnected.ReadLine();
@@ -46,7 +45,6 @@ namespace Server
                     Console.WriteLine(messageclientdis);
 
                 }
-                Console.WriteLine("check if getmessagefromclient readfromclient workend");
 
             }
 

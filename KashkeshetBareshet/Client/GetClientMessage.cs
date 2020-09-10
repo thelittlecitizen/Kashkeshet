@@ -19,7 +19,6 @@ namespace Client
         
         public void Print()
         {
-            Console.WriteLine("check if getclientmessafe work");
             //Thread thread = new Thread(Print);
             //thread.Start();
             StreamWriter sWriter = new StreamWriter(TcpClient.GetStream());
@@ -35,7 +34,6 @@ namespace Client
                 sWriter.WriteLine($"Client disconnected");
                 sWriter.Flush();
 
-                Console.WriteLine("check if getclientmessafe workend");
 
             }
         }

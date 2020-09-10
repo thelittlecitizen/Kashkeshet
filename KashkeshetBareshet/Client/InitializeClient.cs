@@ -13,7 +13,7 @@ namespace Client
         public string IpAddress { get; set; }
         public int Port { get; set; }
         public int ClientId { get; set; }
-        public TcpClient tcpClient { get; set; }
+        public TcpClient TcpClient { get; set; }
 
         public InitializeClient(string ipAddress, int port, int clientId)
         {
@@ -21,7 +21,7 @@ namespace Client
             Port = port;
             ClientId = clientId;
 
-            tcpClient = new TcpClient(ipAddress, port);
+            TcpClient = new TcpClient(ipAddress, port);
 
         }
     }

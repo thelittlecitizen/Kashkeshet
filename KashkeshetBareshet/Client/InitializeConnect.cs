@@ -10,20 +10,22 @@ namespace Client
 {
     class InitializeConnect
     {
-        public TcpClient TcpClient { get; set; }
-        public InitializeClient initializeClient { get; set; }
 
-        public InitializeConnect(TcpClient tcpClient)
+        public InitializeClient InitializeClient { get; set; }
+
+        public InitializeConnect(InitializeClient initializeClient)
         {
-            TcpClient = tcpClient;
+            InitializeClient = initializeClient;
         }
 
         public void Connect()
         {
-            StreamWriter sWriterclient = new StreamWriter(TcpClient.GetStream());
+            StreamWriter sWriterclient = new StreamWriter(InitializeClient.TcpClient.GetStream());
 
-            sWriterclient.WriteLine($"{initializeClient.ClientId} connected");
+            sWriterclient.WriteLine($"{InitializeClient.ClientId} connected");
             sWriterclient.Flush();
+
+            
         }
     }
 }

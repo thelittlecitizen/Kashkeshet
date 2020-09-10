@@ -19,7 +19,6 @@ namespace Client
         
         public void Read()
         {
-            Console.WriteLine("check if getmessagefrom server read work");
             StreamReader sReader = new StreamReader(TcpClient.GetStream());
 
             while (true)
@@ -35,7 +34,6 @@ namespace Client
                     break;
                 }
             }
-            Console.WriteLine("check if getmessagefrom server read workend");
 
         }
     }

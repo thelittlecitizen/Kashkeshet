@@ -12,10 +12,10 @@ namespace Client
     {
         public string IpAddress { get; set; }
         public int Port { get; set; }
-        public int ClientId { get; set; }
+        public Guid ClientId { get; set; }
         public TcpClient TcpClient { get; set; }
 
-        public InitializeClient(string ipAddress, int port, int clientId)
+        public InitializeClient(string ipAddress, int port, Guid clientId)
         {
             IpAddress = ipAddress;
             Port = port;

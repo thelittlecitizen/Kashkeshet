@@ -14,8 +14,7 @@ namespace Client
         static void Main(string[] args)
         {
 
-            InitializeClient initializeClient = new InitializeClient("127.0.0.1", 11000, 1);
-            //InitializeClient initializeClient1 = new InitializeClient("127.0.0.1", 11000, 2);
+            InitializeClient initializeClient = new InitializeClient("127.0.0.1", 11000, Guid.NewGuid());
 
             GetMessageFromServer getMessageFromServer = new GetMessageFromServer(initializeClient.TcpClient);
             Thread t = new Thread(() => getMessageFromServer.Read());

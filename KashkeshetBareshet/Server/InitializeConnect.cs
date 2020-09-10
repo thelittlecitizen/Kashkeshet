@@ -28,10 +28,13 @@ namespace Server
             while (true)
             {
                 TcpClient tcpClient = TcpListener.AcceptTcpClient();
+               // Console.WriteLine("connected");
                 TcpClientsList.Add(tcpClient);
 
-                GetMessageFromClient getMessageFromClient = new GetMessageFromClient(tcpClient);
-                getMessageFromClient.ReadFromClient();
+                GetMessageFromClient getMessageFromClient = new GetMessageFromClient(tcpClient, this);
+                //getMessageFromClient.ReadFromClient();
+                Thread t2 = new Thread(() => getMessageFromClient.ReadFromClient());
+                t2.Start();
             }
 
 

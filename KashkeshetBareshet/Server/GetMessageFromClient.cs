@@ -10,14 +10,16 @@ namespace Server
 {
     class GetMessageFromClient
     {
-        public TcpClient TcpClient;
-        public Broadcast Broadcast;
+        public TcpClient TcpClient { get; set; }
+        public Broadcast Broadcast { get; set; }
+        public InitializeConnect InitializeConnect { get; set; }
 
 
-        public GetMessageFromClient(TcpClient tcpClient)
+        public GetMessageFromClient(TcpClient tcpClient, InitializeConnect initializeConnect)
         {
             TcpClient = tcpClient;
-            Broadcast = new Broadcast(new List<TcpClient>());
+            InitializeConnect = initializeConnect;
+            Broadcast = new Broadcast(InitializeConnect.TcpClientsList);
         }
 
         public void ReadFromClient()
@@ -25,11 +27,12 @@ namespace Server
             //broadcast connected message//
             StreamReader clientconnected = new StreamReader(TcpClient.GetStream());
             string messageclient = clientconnected.ReadLine();
+            Broadcast.MessageBroadcast(messageclient, TcpClient);
+            Console.WriteLine(messageclient);
            
             //broadcast disconnected message//
             StreamReader clientdisconnectesd = new StreamReader(TcpClient.GetStream());
-            Broadcast.MessageBroadcast(messageclient, TcpClient);
-            Console.WriteLine(messageclient);
+            
 
             StreamReader reader = new StreamReader(TcpClient.GetStream());
 

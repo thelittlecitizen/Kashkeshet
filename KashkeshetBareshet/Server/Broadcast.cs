@@ -12,6 +12,7 @@ namespace Server
     {
         public List<TcpClient> TcpClientsList;
 
+
         public Broadcast(List<TcpClient> tcpClients)
         {
             TcpClientsList = tcpClients;

@@ -10,16 +10,12 @@ namespace Client
 {
     class Program
     {
-        //public static void PrintCoral()
-        //{
-        //    while(true)
-        //        Console.WriteLine("Coral");
-        //}
+      
         static void Main(string[] args)
         {
-           
-            InitializeClient initializeClient = new InitializeClient("127.0.0.1",11000,1);
-            InitializeClient initializeClient1 = new InitializeClient("127.0.0.1", 11000, 2);
+
+            InitializeClient initializeClient = new InitializeClient("127.0.0.1", 11000, 1);
+            //InitializeClient initializeClient1 = new InitializeClient("127.0.0.1", 11000, 2);
 
             GetMessageFromServer getMessageFromServer = new GetMessageFromServer(initializeClient.TcpClient);
             Thread t = new Thread(() => getMessageFromServer.Read());
@@ -28,12 +24,11 @@ namespace Client
             {
                 InitializeConnect initializeConnect = new InitializeConnect(initializeClient);
                 initializeConnect.Connect();
-
+                GetClientMessage getClientMessage = new GetClientMessage(initializeConnect.InitializeClient.TcpClient);
                 while (true)
                 {
                     if (initializeConnect.InitializeClient.TcpClient.Connected)
                     {
-                        GetClientMessage getClientMessage = new GetClientMessage(initializeConnect.InitializeClient.TcpClient);
                         getClientMessage.Print();
                         //Thread thread = new Thread(getClientMessage.Print);
                         //thread.Start();

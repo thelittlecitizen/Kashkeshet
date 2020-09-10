@@ -20,6 +20,7 @@ namespace Server
         {
             IPAddress = iPAddress;
             Port = port;
+
             TcpListener = new TcpListener (iPAddress, port);
 
         }

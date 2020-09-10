@@ -15,11 +15,13 @@ namespace Server
             List<TcpClient> tcpClientsList = new List<TcpClient>(); 
             InitializeListner initializeListner = new InitializeListner(IPAddress.Any, 11000);
             InitializeConnect initializeConnect = new InitializeConnect(initializeListner.TcpListener, tcpClientsList);
+            //initializeConnect.Connect();
+            //threads//
+            Thread t1 = new Thread(() => initializeConnect.Connect());
+            t1.Start();
             
-            initializeConnect.Connect();
+            
 
-
-
-    }
+        }
 }
 }

@@ -7,8 +7,10 @@ using System.Text;
 using System.Threading;
 
 namespace Client
+
 {
-    class InitializeClient
+    [Serializable]
+    public class InitializeClient
     {
         public string IpAddress { get; set; }
         public int Port { get; set; }
